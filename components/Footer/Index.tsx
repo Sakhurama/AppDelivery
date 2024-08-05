@@ -3,33 +3,28 @@ import { View, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import { ListIcon, MapIcon, ClockIcon } from "../Icons/Index";
 
-
-
-export default function Footer() {
-
-return (
+const Footer: React.FC = () => {
+  return (
     <View className="flex-row items-center justify-between bg-white h-26 px-10 py-3">
-
-        <Link asChild href={"/main/pedidos"}>
+        <Link href="/main/pedidos" asChild>
             <TouchableOpacity>
-                <ListIcon/>
+                <ListIcon />
             </TouchableOpacity>
         </Link>
 
-        <Link asChild href={"https://www.google.com/maps"}>
+        <Link href="https://www.google.com/maps" asChild>
             <TouchableOpacity>
-                <MapIcon/>
+                <MapIcon />
             </TouchableOpacity>
         </Link>
 
-        <Link asChild href={"/main/entregados"}>
+        <Link href="/main/entregados" asChild>
             <TouchableOpacity>
-                <ClockIcon/>
+                <ClockIcon />
             </TouchableOpacity>
         </Link>
-
     </View>
-);
-}
+  );
+};
 
-export { Footer };
+export default Footer;

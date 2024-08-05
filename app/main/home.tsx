@@ -18,7 +18,7 @@ export default function Main() {
 
             <Link asChild={true} href={"/main/pedidos"}>
                 <StyledPressable className= "active:opacity-70 border border-white active:border-[#DA291C] bg-gray-200 active:bg-yellow-400 rounded-lg mt-10 p-5">
-                        <Text className="text-lg font-bold">
+                        <Text className="text-lg font-bold ">
                             Pedidos asignados
                         </Text>
                         <Text>Consulta tus pedidos pendientes por entregar</Text>
