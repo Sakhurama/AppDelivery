@@ -3,7 +3,6 @@ import { StatusBar } from "expo-status-bar";
 import {
     Text,
     View,
-    TextInput,
     Image,
     TouchableOpacity,
     Platform,
@@ -11,10 +10,10 @@ import {
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native-paper';
 
 // Iconos e Imágenes
 import LogoCompleto from "../../assets/logoCompleto.png";
-import { EmailIcon, EyeIcon } from "../Icons/Index";
 
 
 
@@ -23,6 +22,7 @@ export default function LoginComponent() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
 
     const handleSubmit = () => {
         console.log("Correo electrónico:", email);
@@ -48,49 +48,42 @@ return (
         <View className="flex-1 p-10 justify-center">
             <Image source={LogoCompleto} className="w-[200px] h-[200px] self-center mb-5" style={{ resizeMode: 'contain' }} />
 
-            <View className="gap-5 items-center">
-
-                <View className="w-full">
-                    <Text className="text-lg mb-2 font-medium">Correo electrónico:</Text>
-                    <View className="flex-row items-center border border-gray-500 rounded-md bg-white">
-                        <TextInput
-                            className="h-[50px] flex-1 p-3 text-base"
-                            value={email}
-                            onChangeText={setEmail}
-                            placeholder="Ingrese su correo"
-                            keyboardType="email-address"
-                            autoCapitalize="none"
-                        />
-                        <EmailIcon style={{ marginRight: 15 }}/>
-                    </View>
+            <View className="gap-6 items-center">
+                <View>
+                    <Text className="text-center text-xl mb-2 font-bold">Gestión de Pedidos</Text>
+                    <Text className="text-center text-base mb-2 font-regular">Inicia sesión para acceder a tus pedidos</Text>
                 </View>
 
                 <View className="w-full">
-                    <Text className="text-lg mb-2 font-medium">Contraseña:</Text>
-                    <View className="flex-row items-center border border-gray-500 rounded-md bg-white">
-                        <TextInput
-                            className="h-[50px] flex-1 p-3 text-base"
-                            secureTextEntry={!showPassword}
-                            value={password}
-                            onChangeText={setPassword}
-                            placeholder="Ingrese su contraseña"
-                        />
-                        <TouchableOpacity onPress={togglePasswordVisibility}>
-                            <EyeIcon 
-                                name={showPassword ? "eye-off" : "eye"}
-                                size={24}
-                                color="green"
-                                style={{ marginRight: 15 }}
-                            />
-                        </TouchableOpacity>
-                    </View>
+                    <TextInput
+                        label="Correo electrónico"
+                        right={<TextInput.Icon icon="email" />}
+                        mode="outlined"
+                        value={email}
+                        onChangeText={setEmail}
+                    />
+                </View>
+
+                <View className="w-full">
+                    <TextInput
+                        label="Contraseña"
+                        mode="outlined"
+                        secureTextEntry= {!showPassword}
+                        right={
+                            <TextInput.Icon 
+                                icon={showPassword ? "eye-off" : "eye"}
+                                onPress={togglePasswordVisibility}
+                        />}
+                        value={password}
+                        onChangeText={setPassword}
+                    />
                 </View>
 
                 <TouchableOpacity
                     className="w-full h-[50px] mt-5 bg-[#FFBC0D] p-2 rounded-md items-center justify-center" 
                     onPress={handleSubmit}
                     >
-                    <Text className="text-black text-lg">Ingresar</Text>
+                    <Text className="text-black text-lg">Iniciar sesión</Text>
                 </TouchableOpacity>
             </View>
         </View>
